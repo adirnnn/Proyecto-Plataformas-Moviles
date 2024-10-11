@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.uvg.proyectoplataformas.fornotes.presentation.addandedit.AddEditNoteScreen
 import com.uvg.proyectoplataformas.fornotes.presentation.note.NoteScreen
+import com.uvg.proyectoplataformas.fornotes.presentation.userlogin.ProfileScreen
 
 @Composable
 fun MainNavigation(navController: NavHostController) {
@@ -17,6 +18,7 @@ fun MainNavigation(navController: NavHostController) {
         startDestination = Screen.NoteScreen.route,
     ) {
         composable(route = Screen.NoteScreen.route) { NoteScreen(navController) }
+        composable(Screen.ProfileScreen.route) { ProfileScreen(navController) }
         composable(
             route = Screen.AddEditNoteScreen.route + "?noteId={noteId}&noteColor={noteColor}",
             arguments = listOf(

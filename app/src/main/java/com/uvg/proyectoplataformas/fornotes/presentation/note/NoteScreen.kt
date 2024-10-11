@@ -27,6 +27,7 @@ import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -44,6 +45,8 @@ import com.uvg.proyectoplataformas.navigation.Screen
 import com.uvg.proyectoplataformas.fornotes.presentation.note.components.NoteItem
 import com.uvg.proyectoplataformas.fornotes.presentation.note.components.OrderSection
 import kotlinx.coroutines.launch
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 
 @Composable
 fun NoteScreen(
@@ -51,15 +54,16 @@ fun NoteScreen(
     vm: NoteScreenViewModel = hiltViewModel()
 ) {
     val state = vm.state.value
-    val snackbarHostState = remember { SnackbarHostState() } // Updated for Material3
+    val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
+    val navController = rememberNavController()
 
     Scaffold(
-        snackbarHost = { SnackbarHost(snackbarHostState) },  // Updated to use SnackbarHostState
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { navigator.navigate(Screen.AddEditNoteScreen.route) },
-                containerColor = MaterialTheme.colorScheme.primary // Updated for Material3
+                containerColor = MaterialTheme.colorScheme.primary
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
@@ -88,6 +92,16 @@ fun NoteScreen(
                         Icon(
                             imageVector = Icons.Default.Sort,
                             contentDescription = "Sort",
+                        )
+                    }
+                    IconButton(
+                        onClick = {
+                            navigator.navigate(Screen.ProfileScreen.route)
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Person,
+                            contentDescription = "Profile Icon"
                         )
                     }
                 }
