@@ -8,10 +8,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.firebase.auth.FirebaseAuth
+import android.widget.Toast
 
 @Composable
 fun RegisterScreen(navController: NavController) {
-    val context = LocalContext.current
+    val auth = FirebaseAuth.getInstance()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
@@ -66,16 +68,23 @@ fun RegisterScreen(navController: NavController) {
         Button(
             onClick = {
                 if (email.isNotBlank() && password == confirmPassword) {
-                    // On successful registration, navigate to the main screen
-                    navController.navigate("note_screen") {
-                        popUpTo("register_screen") { inclusive = true }
-                    }
+                    auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                navController.navigate("note_screen") {
+                                    popUpTo("register_screen") { inclusive = true }
+                                }
+                            } else {
+                                showError = true
+                                errorMessage = "Registration failed: ${task.exception?.localizedMessage}"
+                            }
+                        }
                 } else {
                     showError = true
                     errorMessage = if (password != confirmPassword) {
                         "Passwords do not match"
                     } else {
-                        "Please fill all the fields"
+                        "Please fill all fields"
                     }
                 }
             },

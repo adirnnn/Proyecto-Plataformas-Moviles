@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "41275578992",
+    "project_id": "proyecto-plataformas-9f749",
+    "storage_bucket": "proyecto-plataformas-9f749.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41275578992:android:65447f57fc908f1cb8f2b5",
+        "android_client_info": {
+          "package_name": "com.uvg.proyectoplataformas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnPHTnUGVDVLozyo2ZO8CoSCeQ4bYrQvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

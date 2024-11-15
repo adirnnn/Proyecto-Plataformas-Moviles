@@ -12,13 +12,17 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.uvg.proyectoplataformas.MyApp
 import com.uvg.proyectoplataformas.fornotes.presentation.MainActivity
+import com.google.firebase.auth.FirebaseAuth
+import android.widget.Toast
 
 @Composable
 fun LoginScreen(navController: NavController) {
     val context = LocalContext.current
+    val auth = FirebaseAuth.getInstance()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showError by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -51,18 +55,26 @@ fun LoginScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         if (showError) {
-            Text(text = "Invalid credentials, please try again", color = MaterialTheme.colorScheme.error)
+            Text(text = errorMessage, color = MaterialTheme.colorScheme.error)
         }
 
         Button(
             onClick = {
                 if (email.isNotBlank() && password.isNotBlank()) {
-                    // On successful login, navigate to the main screen
-                    navController.navigate("note_screen") {
-                        popUpTo("login_screen") { inclusive = true }
-                    }
+                    auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                navController.navigate("note_screen") {
+                                    popUpTo("login_screen") { inclusive = true }
+                                }
+                            } else {
+                                showError = true
+                                errorMessage = "Authentication failed: ${task.exception?.localizedMessage}"
+                            }
+                        }
                 } else {
                     showError = true
+                    errorMessage = "Please fill all fields"
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -72,13 +84,10 @@ fun LoginScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Option to navigate to the registration screen
         Text(
             text = "Don't have an account? Register here",
             modifier = Modifier
-                .clickable {
-                    navController.navigate("register_screen")
-                }
+                .clickable { navController.navigate("register_screen") }
                 .padding(top = 16.dp),
             color = MaterialTheme.colorScheme.primary
         )
