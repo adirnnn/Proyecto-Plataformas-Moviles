@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">ProyectoPlataformas</string>
+    <string name="app_name" translatable="false">ProyectoPlataformas</string>
+    <string name="login_title">Login</string>
+    <string name="register_title">Register</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Password</string>
+    <string name="confirm_password_label">Confirm Password</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+    <string name="no_account">Don not have an account? Register here</string>
+    <string name="error_fill_fields">Please fill all fields</string>
+    <string name="error_authentication_failed">Authentication failed</string>
+    <string name="error_passwords_do_not_match">Passwords do not match</string>
+    <string name="error_registration_failed">Registration failed</string>
+    <string name="profile_title">Profile Settings</string>
+    <string name="default_name">Name</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="edit_name">Edit Name</string>
+    <string name="cancel_name">Cancel</string>
+    <string name="save_name">Save</string>
+    <string name="box_name">Name</string>
+    <string name="logout">Logout</string>
 </resources>

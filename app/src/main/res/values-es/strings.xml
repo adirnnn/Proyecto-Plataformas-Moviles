@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name" translatable="false">ProyectoPlataformas</string>
+    <string name="login_title">Iniciar sesión</string>
+    <string name="register_title">Registrarse</string>
+    <string name="email_label">Correo electrónico</string>
+    <string name="password_label">Contraseña</string>
+    <string name="confirm_password_label">Confirmar contraseña</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="register_button">Registrarse</string>
+    <string name="no_account">¿No tienes una cuenta? Regístrate aquí</string>
+    <string name="error_fill_fields">Por favor completa todos los campos</string>
+    <string name="error_authentication_failed">Error de autenticación</string>
+    <string name="error_passwords_do_not_match">Las contraseñas no coinciden</string>
+    <string name="error_registration_failed">Error al registrarse</string>
+    <string name="profile_title">Configuración del Perfil</string>
+    <string name="default_name">Nombre</string>
+    <string name="change_profile_picture">Cambiar foto de perfil</string>
+    <string name="profile_name">Nombre de Perfil</string>
+    <string name="edit_name">Editar Nombre</string>
+    <string name="cancel_name">Cancelar</string>
+    <string name="save_name">Guardar</string>
+    <string name="box_name">Nombre</string>
+    <string name="logout">Cerrar Sesión</string>
+</resources>

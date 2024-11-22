@@ -10,6 +10,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
+import androidx.compose.ui.res.stringResource
+import com.uvg.proyectoplataformas.R
 
 @Composable
 fun RegisterScreen(navController: NavController) {
@@ -20,19 +22,25 @@ fun RegisterScreen(navController: NavController) {
     var showError by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
 
+    // extract string for messages
+    val errorFillFields = stringResource(R.string.error_fill_fields)
+    val errorPasswordsDoNotMatch = stringResource(R.string.error_passwords_do_not_match)
+    val errorRegistrationFailed = stringResource(R.string.error_registration_failed)
+
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Text(text = "Register", style = MaterialTheme.typography.titleLarge)
+        Text(text = stringResource(R.string.register_title), style = MaterialTheme.typography.titleLarge)
 
         Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Email") },
+            label = { Text(stringResource(R.string.email_label)) },
             modifier = Modifier.fillMaxWidth(),
             textStyle = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onBackground)
         )
@@ -42,7 +50,7 @@ fun RegisterScreen(navController: NavController) {
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Password") },
+            label = { Text(stringResource(R.string.password_label)) },
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth(),
             textStyle = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onBackground)
@@ -53,7 +61,7 @@ fun RegisterScreen(navController: NavController) {
         OutlinedTextField(
             value = confirmPassword,
             onValueChange = { confirmPassword = it },
-            label = { Text("Confirm Password") },
+            label = { Text(stringResource(R.string.confirm_password_label)) },
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth(),
             textStyle = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onBackground)
@@ -76,21 +84,21 @@ fun RegisterScreen(navController: NavController) {
                                 }
                             } else {
                                 showError = true
-                                errorMessage = "Registration failed: ${task.exception?.localizedMessage}"
+                                errorMessage = "$errorRegistrationFailed: ${task.exception?.localizedMessage}"
                             }
                         }
                 } else {
                     showError = true
                     errorMessage = if (password != confirmPassword) {
-                        "Passwords do not match"
+                        errorPasswordsDoNotMatch
                     } else {
-                        "Please fill all fields"
+                        errorFillFields
                     }
                 }
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Register")
+            Text(stringResource(R.string.register_button))
         }
     }
 }
