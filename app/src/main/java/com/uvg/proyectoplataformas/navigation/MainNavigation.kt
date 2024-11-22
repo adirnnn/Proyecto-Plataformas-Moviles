@@ -17,29 +17,29 @@ fun MainNavigation(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.LoginScreen.route // Start with LoginScreen
+        startDestination = Screen.LoginScreen.route // iniciar
     ) {
-        // LoginScreen composable
+
         composable(route = Screen.LoginScreen.route) {
             LoginScreen(navController)
         }
 
-        // RegisterScreen composable
+
         composable(route = Screen.RegisterScreen.route) {
             RegisterScreen(navController)
         }
 
-        // Main NoteScreen after successful login
+
         composable(route = Screen.NoteScreen.route) {
             NoteScreen(navController)
         }
 
-        // ProfileScreen composable
+
         composable(route = Screen.ProfileScreen.route) {
             ProfileScreen(navController)
         }
 
-        // Add/Edit Note Screen
+        // add/edit note
         composable(
             route = Screen.AddEditNoteScreen.route + "?noteId={noteId}&noteColor={noteColor}",
             arguments = listOf(

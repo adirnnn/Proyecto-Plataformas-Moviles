@@ -71,22 +71,22 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    //Viewmodel
+    //viewmodel
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
-    //Hilt
+    //hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
 
-    //Nav
+    //nav
     implementation("androidx.navigation:navigation-compose:2.8.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
-    //Coroutines
+    //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
-    //Kotlin for room
+    //room
     implementation("androidx.room:room-ktx:2.6.1")
 
     //room
@@ -98,7 +98,7 @@ dependencies {
     implementation("androidx.compose.material3:material3-window-size-class:1.3.0")
     implementation("androidx.compose.material:material-icons-extended")
 
-    // change status bar
+    //  status bar
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
 
     // lottie animations

@@ -39,11 +39,11 @@
             context.getSharedPreferences("profile_prefs", Context.MODE_PRIVATE)
         }
 
-        // Retrieve and set the preferred language
+        // bring and set the selected  language
         val savedLanguage = sharedPreferences.getString("app_language", "en") ?: "en"
         val (currentLanguage, setCurrentLanguage) = remember { mutableStateOf(savedLanguage) }
 
-        // Apply language changes
+        // apply language
         fun applyLanguage(languageCode: String) {
             val locale = Locale(languageCode)
             Locale.setDefault(locale)
@@ -51,15 +51,15 @@
             config.setLocale(locale)
             context.resources.updateConfiguration(config, context.resources.displayMetrics)
 
-            // Save the language preference
+            // save  language preference
             sharedPreferences.edit().putString("app_language", languageCode).apply()
 
-            // Refresh the ProfileScreen by updating the current language state
+            // refresh profile screen
             setCurrentLanguage(languageCode)
         }
 
 
-        // Localized strings
+        //
         val profileTitle = stringResource(R.string.profile_title)
         val changeProfilePicture = stringResource(R.string.change_profile_picture)
         val defaultName = stringResource(R.string.default_name)

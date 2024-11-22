@@ -3,7 +3,7 @@ package com.uvg.proyectoplataformas.fornotes.domain.repository
 import com.uvg.proyectoplataformas.fornotes.domain.model.Note
 import kotlinx.coroutines.flow.Flow
 
-//definition
+//definicion
 interface Repository {
 
     fun getNotes(): Flow<List<Note>>

@@ -29,7 +29,7 @@ fun LoginScreen(navController: NavController) {
         context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
     }
 
-    // extract string for messages
+    // extraer string for messages
     val errorFillFields = stringResource(R.string.error_fill_fields)
     val errorAuthenticationFailed = stringResource(R.string.error_authentication_failed)
     //
@@ -47,10 +47,10 @@ fun LoginScreen(navController: NavController) {
         config.setLocale(locale)
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
 
-        // Save the sel ected language in SharedPreferences
+        // save the sel ected language
         sharedPreferences.edit().putString("app_language", languageCode).apply()
 
-        // Restart the activity to apply the language change
+
         val restartIntent = Intent(context, MainActivity::class.java)
         context.startActivity(restartIntent)
         (context as? MainActivity)?.finish()
