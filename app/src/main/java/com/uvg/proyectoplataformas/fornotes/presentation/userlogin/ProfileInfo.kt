@@ -237,11 +237,9 @@
                 )
                 Divider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
     
-                ProfileOption(icon = Icons.Default.Favorite, title = "Favorites")
-                Divider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
-    
-                ProfileOptionWithSwitch(icon = Icons.Default.Notifications, title = "Notifications")
-                Divider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
+
+                //ProfileOptionWithSwitch(icon = Icons.Default.Notifications, title = "Notifications")
+               // Divider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
     
                 Spacer(modifier = Modifier.height(16.dp))
     
@@ -259,12 +257,14 @@
 
             }
 
-            // Spacer pushes the language buttons to the bottom
+            //
             Spacer(modifier = Modifier.height(1.dp))
 
-            // Language Selection Buttons
+            // buttons for language
             Row(
-                modifier = Modifier.fillMaxHeight(),
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
@@ -357,7 +357,7 @@
                     textStyle = LocalTextStyle.current.copy(
                         color = MaterialTheme.colorScheme.onBackground // set text color
                     ),
-                    singleLine = true, // line input
+                    singleLine = true,
                     maxLines = 1
                 )
             },
@@ -425,7 +425,7 @@
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp, horizontal = 16.dp)
-                .clickable(onClick = onClick), // Make the entire card clickable
+                .clickable(onClick = onClick), //
             colors = CardDefaults.cardColors(
                 containerColor = if (isLogout) Color(0xFFFFD8D8) else Color(0xFFD8E6D8) // Different color for logout
             ),
